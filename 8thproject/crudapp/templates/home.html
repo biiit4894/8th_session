@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>장한빛 블로그이다아악!!!</title>
+    <style>
+        #content {
+            text-align: center;
+            background-color: rgb(255, 205, 130);
+            margin-left: 500px;
+            margin-right: 500px;
+            margin-top: 40px;
+            border-radius: 20px;
+        }
+        #content h1 {
+            font-size: 28px;
+            color:rgb(39, 129, 231);
+            text-decoration: underline 3px rgb(243, 154, 30);
+        }
+        #content p.date {
+            font-size: 15px;
+        }
+        #content p.summary {
+            font-size: 18px;
+        }
+        #content #more {
+            font-size: 12px;
+        }
+        .create {
+            display: inline-block;
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+            padding: 5px;
+            background-color:rgb(255, 208, 142);
+            border-radius: 10px;
+            float:right;
+            margin-right: 500px;
+            margin-top: 20px;            
+        }
+    </style>
+</head>
+<body>
+    
+    {% for crudapp in crudapps.all %}
+    <div id="content">
+        <h1>{{crudapp.title}}</h1>
+        <p class="date">{{crudapp.pub_date}}</p>
+        <p class="summary">{{crudapp.summary}}<a href="{% url 'detail' crudapp.id %}" id="more">...more</a></p>       
+    </div>        
+    {% endfor %} 
+    <a href="{% url 'postcreate' %}" class="create">새 글 쓰기</a>
+    
+    {% endblock %} 
+</body>
+     
+</html>
+
+
